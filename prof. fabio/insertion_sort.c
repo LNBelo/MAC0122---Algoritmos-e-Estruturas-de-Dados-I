@@ -20,7 +20,7 @@ void print_lista(int A[], int n) {
 	printf("]\n\n");
 }
 
-int main() {
+void main() {
 	int A[] = {3,7,28,-10,1,0,900,-500, 23672, 8,7};
 	print_lista(A,11);
 	insertion_sort(A,11);

@@ -116,14 +116,33 @@ void insert(Tree* T, Node* N){
 			y->right = N; 
 		}
 };
-void delete(Tree* T, Node* N) {
+void tree_delete(Tree* T, Node* z) {
 	Node* y;
-	if (N->left == NULL) || (N->right == NULL)
-		y = N;
+	if ((z->left == NULL) || (z->right == NULL))
+		y = z;
 	else
-		y = tree_successor(N);
+		y = tree_successor(z);
+		
+	Node* x;
+	if (y->left != NULL) 
+		x = y->left;
+	else
+		x = y->right;
+		
+	if (x != NULL)
+		x->p = y->p;
 	
-
+	if (y->p == NULL)
+		T->root = x;
+	else {
+		if (y == y->p->left)
+			y->p->left = x;
+		else
+			y->p->right = x;
+	}
+	
+	if (y != z) 
+		z->key = y->key;
 };
 
 void main() {
@@ -213,11 +232,19 @@ void main() {
 	preorder_tree_walk(T->root);
 	printf("\n");
 	
-	int b = 6;
+//	int b = 6;
+//	Node* N = tree_search(T->root,b);
+//	Node* S = tree_successor(N);
+//	printf("O conteúdo do sucessor do nó %d é %d\n\n",	b, S->key);
+	
+	int b = 7;
 	Node* N = tree_search(T->root,b);
-	Node* S = tree_successor(N);
-	printf("O conteúdo do sucessor do nó %d é %d\n\n",
-	b, S->key);
+	tree_delete(T,N);
+	Node* NN = tree_search(T->root,11);
+	tree_delete(T,NN);
+	
+	preorder_tree_walk(T->root);
+	printf("\n");
 	
 	free(T);
 	free(N2);

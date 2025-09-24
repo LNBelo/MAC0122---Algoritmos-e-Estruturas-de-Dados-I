@@ -7,7 +7,6 @@ struct pessoa {
 	};
 
 void main() {
-	
 	char nome[20][20];
 	int idade[20];
 	
