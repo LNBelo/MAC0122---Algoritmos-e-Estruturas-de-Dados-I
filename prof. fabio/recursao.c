@@ -36,7 +36,7 @@ int fast_fibonacci(int n) {
 
 void main() {
 	
-	int n = 45;
+	int n = 5;
 	
 	printf("O %d número de Fibonacci é %d\n",n,fast_fibonacci(n));
 	

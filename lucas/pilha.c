@@ -1,23 +1,23 @@
 typedef struct {
-    char dados[100];
+    int dados[100];
     int tam;
 } Pilha;
 
-void inserir(Pilha *P, char x){
+void inserir(Pilha *P, int x){
     int topo = P->tam; // P->tam é igual a (*P).tam
     P->dados[topo] = x;
     P->tam++;
 }
 
-char remover(Pilha *P){
+int remover(Pilha *P){
     printf("%d\n", P->tam);
     P->tam--; // Para remover da pilha basta diminuir o seu tamanho
-    printf("remover %c\n", P->dados[P->tam]);
+    printf("remover %d\n", P->dados[P->tam]);
 }; 
 
 void imprimirPilha(Pilha *P){
     for(int i = 0; i < P->tam; i++){
-        printf("%c, ", P->dados[i]);
+        printf("%d, ", P->dados[i]);
     };
     printf("\n");
 }
@@ -26,9 +26,12 @@ void imprimirPilha(Pilha *P){
 int main(){
     Pilha P;
     P.tam = 0;
-    inserir(&P, 'a');
-    inserir(&P, 'b');
+    inserir(&P, 8);
+    inserir(&P, 12);
+    inserir(&P, 6);
+    inserir(&P, 7);
     imprimirPilha(&P);
+    remover(&P);
     remover(&P);
     imprimirPilha(&P);
 }
